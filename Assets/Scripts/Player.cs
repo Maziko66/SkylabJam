@@ -10,9 +10,10 @@ public class Player : MonoBehaviour
 
     [Header("GameObjects")]
     [SerializeField] private GameObject feet;
+    [SerializeField] private PlayerLadderTrigger playerLadderTrigger;
 
     [Header("Variables")]
-    [SerializeField] private float playerSpeed;
+    [SerializeField] private float playerSpeed = 10f;
     [SerializeField] private float playerGravityScale = 10f;
     private Vector2 moveInput;
     
@@ -34,12 +35,14 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        isOverLadder = playerLadderTrigger.GetLadderCheck();
+
         Run();
+        IsOnLadderCheck();
     }
 
     void OnMove(InputValue value)
     {
-        Debug.Log("on move start");
         if(canMove)
         {
             moveInput = value.Get<Vector2>();
@@ -68,22 +71,25 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Ladder 1")
+        
+    }
+
+    private void IsOnLadderCheck()
+    {
+        if(isOverLadder)
         {
             Debug.Log("over ladder");
-            isOverLadder = true;
             rb.gravityScale = 0;
         }
-        
+        else
+        {
+            rb.gravityScale = playerGravityScale;
+        }
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag == "Ladder 1")
-        {
-            isOverLadder = false;
-            rb.gravityScale = playerGravityScale;
-        }
+    
     }
 
 }
