@@ -29,9 +29,9 @@ public class GameManager : MonoBehaviour
         ChangeLayer();
     }
     
-    private void ChangeLayer()
-    {
-        if(currentLayer == 1)
+    private void ChangeLayer()                                             //TODO!!
+    {                                                                      //CHANGE SORTING LAYER & COLLISION INSTEAD OF SETACTIVE
+        if(currentLayer == 1)                                              //ADD LAYER MASKING OR SPRITE SHENANIGANS             
         {
             player1.SetRigidBodyGravityScale(0);
             for(int i = 0; i < layer1.Length; i++)
