@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tilemap 1
   - Tilemap 2
+  - Ladder 1
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Player
   - Player Feet
   - 
-  - 
+  - Ladder
   - 
   - 
   - 

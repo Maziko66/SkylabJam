@@ -6,12 +6,14 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
+    Collider2D playerCollider;
 
     [Header("GameObjects")]
     [SerializeField] private GameObject feet;
 
     [Header("Variables")]
     [SerializeField] private float playerSpeed;
+    [SerializeField] private float playerGravityScale = 10f;
     private Vector2 moveInput;
     
     [Header("Bools")]
@@ -21,6 +23,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<Collider2D>();
     }
 
     void Start()
@@ -49,17 +52,37 @@ public class Player : MonoBehaviour
 
     void Run()
     {
-        
-        
         if(isOverLadder)
         {
-            Vector2 playerVelocity = new Vector2(0, moveInput.y * playerSpeed);
+            Vector2 playerVelocity = new Vector2(moveInput.x * playerSpeed, moveInput.y * playerSpeed);
             rb.velocity = playerVelocity;
         }
         else
         {
             Vector2 playerVelocity = new Vector2(moveInput.x * playerSpeed, rb.velocity.y);
             rb.velocity = playerVelocity;
+        }
+    }
+
+    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Ladder 1")
+        {
+            Debug.Log("over ladder");
+            isOverLadder = true;
+            rb.gravityScale = 0;
+        }
+        
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "Ladder 1")
+        {
+            isOverLadder = false;
+            rb.gravityScale = playerGravityScale;
         }
     }
 
