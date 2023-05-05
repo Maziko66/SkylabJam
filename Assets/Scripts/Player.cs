@@ -9,17 +9,19 @@ public class Player : MonoBehaviour
     Collider2D playerCollider;
 
     [Header("GameObjects")]
-    [SerializeField] private GameObject feet;
+    [SerializeField] private PlayerFeet feet;
     [SerializeField] private PlayerLadderTrigger playerLadderTrigger;
 
     [Header("Variables")]
     [SerializeField] private float playerSpeed = 10f;
+    [SerializeField] private float _playerGravityScale = 10f;
     [SerializeField] private float playerGravityScale = 10f;
     private Vector2 moveInput;
     
     [Header("Bools")]
     [SerializeField] private bool canMove = true;
     [SerializeField] private bool isOverLadder = false;
+    [SerializeField] private bool isFeetTouchingGround = false;
 
     void Awake()
     {
@@ -35,10 +37,12 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        rb.gravityScale = playerGravityScale;
         isOverLadder = playerLadderTrigger.GetLadderCheck();
 
         Run();
         IsOnLadderCheck();
+        IsOnGroundCheck();
     }
 
     void OnMove(InputValue value)
@@ -55,20 +59,20 @@ public class Player : MonoBehaviour
 
     void Run()
     {
-        if(isOverLadder)
-        {
-            Vector2 playerVelocity = new Vector2(moveInput.x * playerSpeed, moveInput.y * playerSpeed);
-            rb.velocity = playerVelocity;
-        }
-        else
-        {
-            Vector2 playerVelocity = new Vector2(moveInput.x * playerSpeed, rb.velocity.y);
-            rb.velocity = playerVelocity;
-        }
+
+            if(isOverLadder)
+            {
+                Vector2 playerVelocity = new Vector2(moveInput.x * playerSpeed, moveInput.y * playerSpeed);
+                rb.velocity = playerVelocity;
+            }
+            else
+            {
+                Vector2 playerVelocity = new Vector2(moveInput.x * playerSpeed, rb.velocity.y);
+                rb.velocity = playerVelocity;
+            }
     }
 
     
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         
@@ -78,18 +82,28 @@ public class Player : MonoBehaviour
     {
         if(isOverLadder)
         {
-            Debug.Log("over ladder");
-            rb.gravityScale = 0;
+            //Debug.Log("over ladder");
+            playerGravityScale = 0;
         }
         else
         {
-            rb.gravityScale = playerGravityScale;
+            playerGravityScale = _playerGravityScale;
         }
     }
-    
-    private void OnTriggerExit2D(Collider2D other)
+
+    private void IsOnGroundCheck()
     {
+        isFeetTouchingGround = feet.GetGroundCheck();
+    }
     
+    public void SetRigidBodyGravityScale(float inputVal)
+    {
+        playerGravityScale = inputVal;
+    }
+
+    public float GetDefaultGravityScale()
+    {
+        return _playerGravityScale;
     }
 
 }

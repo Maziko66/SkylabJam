@@ -10,47 +10,24 @@ public class PlayerLadderTrigger : MonoBehaviour
     void Awake()
     {
         myCollider = GetComponent<Collider2D>();
-    }
-    void Start()
-    {
-        
-    }
+    }    
 
-    
     void Update()
     {
         if(myCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
         {
             
             isTouchingLadder = true;
-            Debug.Log("isTouchingLadder: " + isTouchingLadder);
-            return;
+            //Debug.Log("isTouchingLadder: " + isTouchingLadder);
         }
         else
         {
             
             isTouchingLadder = false;
-            Debug.Log("isTouchingLadder: " + isTouchingLadder);
+            //Debug.Log("isTouchingLadder: " + isTouchingLadder);
         }
         
     }
-
-    /* void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.tag == "Ladder 1")
-        {
-            isTouchingLadder = true;
-        }
-    }
-    
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.tag == "Ladder 1")
-        {
-            isTouchingLadder = false;
-        }
-    } */
-    
 
     public bool GetLadderCheck()
     {

@@ -18,7 +18,7 @@ TagManager:
   - Player Feet
   - Player Ladder Trigger
   - Ladder
-  - 
+  - Ground
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 128372821
     locked: 0
