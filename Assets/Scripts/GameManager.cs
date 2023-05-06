@@ -25,8 +25,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<PlayerComp> players = new List<PlayerComp>();
 
     [Header("Tilemap Layers")]
-    [SerializeField] private GameObject[] layer0;
-    [SerializeField] private GameObject[] layer1;
     [SerializeField] private List<JaggedLayers> jaggedLayers = new List<JaggedLayers>();
 
     

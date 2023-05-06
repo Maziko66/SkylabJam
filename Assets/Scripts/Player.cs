@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     
     [Header("Bools")]
+    [SerializeField] private bool playerActive = true;
     [SerializeField] private bool canMove = true;
     [SerializeField] private bool isOverLadder = false;
     [SerializeField] private bool isFeetTouchingGround = false;
@@ -130,6 +131,7 @@ public class Player : MonoBehaviour
             playerGravityScale = _playerGravityScale;
         }
     }
+    
 
     private void IsOnGroundCheck()
     {
