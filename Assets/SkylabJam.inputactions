@@ -1134,6 +1134,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Switch",
+            "id": "82cb2260-cc6d-43c8-9a12-72faeb1b3ffc",
+            "actions": [
+                {
+                    "name": "SwitchPressed",
+                    "type": "Button",
+                    "id": "7c4e946f-d686-43d2-86b4-f3c10d466236",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ca9dbe52-c840-4347-992d-2e77dba2260b",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

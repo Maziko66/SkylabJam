@@ -7,6 +7,7 @@ public class PlayerLadderTrigger : MonoBehaviour
     Collider2D myCollider;
     [SerializeField] private bool isTouchingLadder = false;
     [SerializeField] private bool isTouchingGate = false;
+    [SerializeField] private bool isTouchingSwitch = false;
 
     void Awake()
     {
@@ -41,6 +42,19 @@ public class PlayerLadderTrigger : MonoBehaviour
             //Debug.Log("isTouchingLadder: " + isTouchingLadder);
         }
 
+        if (myCollider.IsTouchingLayers(LayerMask.GetMask("Switch")))
+        {
+
+            isTouchingSwitch = true;
+            //Debug.Log("isTouchingLadder: " + isTouchingLadder);
+        }
+        else
+        {
+
+            isTouchingSwitch = false;
+            //Debug.Log("isTouchingLadder: " + isTouchingLadder);
+        }
+
     }
 
     public bool GetLadderCheck()
@@ -51,5 +65,10 @@ public class PlayerLadderTrigger : MonoBehaviour
     public bool GetGateCheck()
     {
         return isTouchingGate;
+    }
+
+    public bool GetSwitchCheck()
+    {
+        return isTouchingSwitch;
     }
 }

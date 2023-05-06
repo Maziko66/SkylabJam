@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 
     GameManager gameManager;
 
+
+
     [Header("GameObjects")]
     [SerializeField] private PlayerFeet feet;
     [SerializeField] private PlayerLadderTrigger playerLadderTrigger;
@@ -24,6 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool playerActive = true;
     [SerializeField] public bool canMove = true;
     [SerializeField] private bool isOverLadder = false;
+    [SerializeField] private bool isOverSwitch = false;
     [SerializeField] private bool isFeetTouchingGround = false;
     [SerializeField] private bool playerHasHorizontalSpeed;
     [SerializeField] private bool playerIsClimbing;
@@ -58,6 +61,7 @@ public class Player : MonoBehaviour
     {
         rb.gravityScale = playerGravityScale;
         isOverLadder = playerLadderTrigger.GetLadderCheck();
+        isOverSwitch = playerLadderTrigger.GetSwitchCheck();
         playerHasHorizontalSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
         playerIsClimbing = (Mathf.Abs(rb.velocity.y) > Mathf.Epsilon) && isOverLadder;
 
@@ -147,6 +151,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    
 
     private void IsOnGroundCheck()
     {
