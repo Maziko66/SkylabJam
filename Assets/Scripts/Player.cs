@@ -14,12 +14,14 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerLadderTrigger playerLadderTrigger;
 
     [Header("Variables")]
+    [SerializeField] private int playerID = 0;
     [SerializeField] private float playerSpeed = 10f;
     [SerializeField] private float _playerGravityScale = 10f;
     [SerializeField] private float playerGravityScale = 10f;
     private Vector2 moveInput;
     
     [Header("Bools")]
+    [SerializeField] private bool playerActive = true;
     [SerializeField] private bool canMove = true;
     [SerializeField] private bool isOverLadder = false;
     [SerializeField] private bool isFeetTouchingGround = false;
@@ -129,6 +131,7 @@ public class Player : MonoBehaviour
             playerGravityScale = _playerGravityScale;
         }
     }
+    
 
     private void IsOnGroundCheck()
     {
