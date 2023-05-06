@@ -27,6 +27,7 @@ public class FadeInObject : MonoBehaviour
         c.a = 0f;
         sr.color = c;
         col.enabled = false;
+        Debug.Log(col.enabled);
     }
 
 

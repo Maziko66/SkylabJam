@@ -10,6 +10,7 @@ public class SwitchLvl1 : MonoBehaviour
     Collider2D switchCollider;
 
     [SerializeField] bool isColliding;
+    [SerializeField] bool isPressedOnce = false;
 
     void Awake()
     {
@@ -33,9 +34,10 @@ public class SwitchLvl1 : MonoBehaviour
     void OnSwitchPressed()
     {
         Debug.Log("pressed");
-        if(isColliding)
+        if(isColliding && !isPressedOnce)
         {
             fadeInObject.StartFadeIn();
+            isPressedOnce = true;
         }
     }
         
