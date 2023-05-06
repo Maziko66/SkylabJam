@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
     Collider2D playerCollider;
     Animator animator;
+
+    GameManager gameManager;
 
     [Header("GameObjects")]
     [SerializeField] private PlayerFeet feet;
@@ -22,11 +25,12 @@ public class Player : MonoBehaviour
     
     [Header("Bools")]
     [SerializeField] private bool playerActive = true;
-    [SerializeField] private bool canMove = true;
+    [SerializeField] public bool canMove = true;
     [SerializeField] private bool isOverLadder = false;
     [SerializeField] private bool isFeetTouchingGround = false;
     [SerializeField] private bool playerHasHorizontalSpeed;
     [SerializeField] private bool playerIsClimbing;
+    [SerializeField] private bool pressedSwap;
     
     [Header("Animation")]
     public bool animalking = false;
@@ -38,6 +42,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Start()
@@ -71,6 +76,13 @@ public class Player : MonoBehaviour
             return;
         }
     }
+
+    void OnSwap()
+    {
+        gameManager.ChangeLayer();
+        gameManager.SetPlayerActiveStatus();
+    }
+
 
     void Run()
     {

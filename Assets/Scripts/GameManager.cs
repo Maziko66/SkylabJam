@@ -77,11 +77,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    private void OnSwap(InputValue value)
-    {
-        ChangeLayer();
-        SetPlayerActiveStatus();
-    }
+    
     
     
 
@@ -95,7 +91,7 @@ public class GameManager : MonoBehaviour
         collider.enabled = false;
     }
 
-    private void ChangeLayer()
+    public void ChangeLayer()
     {
         int tempLayerIndex = currentLayerIndex;
         
@@ -113,7 +109,7 @@ public class GameManager : MonoBehaviour
         targetLayerIndex = tempLayerIndex;        
     }
 
-    private void SetPlayerActiveStatus()
+    public void SetPlayerActiveStatus()
     {
         int tempPlayer = currentPlayer;
         currentPlayer = targetPlayer;
@@ -132,6 +128,8 @@ public class GameManager : MonoBehaviour
 
         targetPlayer = tempPlayer;
     }
+
+    
 
 
     /* private void ChangeLayer()                                             //TODO!!
