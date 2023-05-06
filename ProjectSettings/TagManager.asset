@@ -9,6 +9,8 @@ TagManager:
   - Ladder 1
   - LayerGate
   - Collectible
+  - DialogStarter
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -24,7 +26,7 @@ TagManager:
   - Background
   - Gate Trigger
   - Collectibles
-  - 
+  - Box
   - 
   - 
   - 
