@@ -2,37 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Ukte.PlayerRelated
+public class PlayerFeet : MonoBehaviour
 {
-    public class PlayerFeet : MonoBehaviour
+    Collider2D myCollider;
+    [SerializeField] private bool isTouchingGround = false;
+
+    void Awake()
     {
-        Collider2D myCollider;
-        [SerializeField] private bool isTouchingGround = false;
+        myCollider = GetComponent<Collider2D>();
+    }
 
-        void Awake()
+    void Update()
+    {
+        if (myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
-            myCollider = GetComponent<Collider2D>();
-        }
 
-        void Update()
+            isTouchingGround = true;
+            //Debug.Log("istouching ground: "+ isTouchingGround);
+        }
+        else
         {
-            if (myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
-            {
 
-                isTouchingGround = true;
-                //Debug.Log("istouching ground: "+ isTouchingGround);
-            }
-            else
-            {
-
-                isTouchingGround = false;
-                //Debug.Log("istouching ground: "+ isTouchingGround);
-            }
+            isTouchingGround = false;
+            //Debug.Log("istouching ground: "+ isTouchingGround);
         }
+    }
 
-        public bool GetGroundCheck()
-        {
-            return isTouchingGround;
-        }
+    public bool GetGroundCheck()
+    {
+        return isTouchingGround;
     }
 }
