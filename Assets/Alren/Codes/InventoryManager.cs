@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using System.Linq;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -32,17 +33,19 @@ public class InventoryManager : MonoBehaviour
 
     public void ListItems()
     {
-        bool isAvailable;
         foreach (var item in Items)
         {
-            isAvailable = false;
-            foreach (var includes in Including)
-            {
-                if (item.itemName == includes)
-                {
-                    isAvailable = true;
-                }
-            }
+            bool isAvailable = Including.FirstOrDefault(i => item.itemName == i) != null;
+
+            //isAvailable = false;
+            //foreach (var includes in Including)
+            //{
+            //    if (item.itemName == includes)
+            //    {
+            //        isAvailable = true;
+            //    }
+            //}
+
             if (!isAvailable)
             {
                 GameObject obj = Instantiate(InventoryItem, ItemContent);
@@ -78,7 +81,6 @@ public class InventoryManager : MonoBehaviour
                             if (str == "Key" || str == "Silver Key")
                             {
                                 Destroy(Temps[i]);
-                                //Temps[i].SetActive(false);
                                 break;
                             }
                         }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Gold Key
   m_EditorClassIdentifier: 
   itemName: Gold Key
-  icon: {fileID: 21300000, guid: 8d3fffad95557b94e841d3d72b2b1844, type: 3}
+  icon: {fileID: 21300000, guid: 29d395759fb40f7439b3489c7f141a1d, type: 3}
