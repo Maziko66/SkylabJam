@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isOverLadder = false;
     [SerializeField] private bool isFeetTouchingGround = false;
     [SerializeField] private bool playerHasHorizontalSpeed;
+    [SerializeField] private bool playerIsClimbing;
     
     [Header("Animation")]
     public bool animalking = false;
@@ -48,12 +49,13 @@ public class Player : MonoBehaviour
         rb.gravityScale = playerGravityScale;
         isOverLadder = playerLadderTrigger.GetLadderCheck();
         playerHasHorizontalSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+        playerIsClimbing = (Mathf.Abs(rb.velocity.y) > Mathf.Epsilon) && isOverLadder;
 
         Run();
         IsOnLadderCheck();
         IsOnGroundCheck();
         AnimationChecks();
-        Debug.Log(rb.velocity);
+        //Debug.Log(rb.velocity);
     }
 
     void OnMove(InputValue value)
@@ -86,7 +88,7 @@ public class Player : MonoBehaviour
 
     void AnimationChecks()
     {
-        if(playerHasHorizontalSpeed)
+        if(playerHasHorizontalSpeed && !playerIsClimbing)
         {
             animator.SetBool("isWalking", true);
             if(rb.velocity.x > 0)
@@ -103,6 +105,15 @@ public class Player : MonoBehaviour
         else
         {
             animator.SetBool("isWalking", false);
+        }
+
+        if(playerIsClimbing)
+        {
+            animator.SetBool("isClimbing", true);
+        }
+        else
+        {
+            animator.SetBool("isClimbing", false);
         }
     }
 
