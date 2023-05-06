@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
     Collider2D playerCollider;
+    Animator animator;
 
     [Header("GameObjects")]
     [SerializeField] private PlayerFeet feet;
@@ -22,11 +23,18 @@ public class Player : MonoBehaviour
     [SerializeField] private bool canMove = true;
     [SerializeField] private bool isOverLadder = false;
     [SerializeField] private bool isFeetTouchingGround = false;
+    [SerializeField] private bool playerHasHorizontalSpeed;
+    
+    [Header("Animation")]
+    public bool animalking = false;
+    public bool animIdle = true;
+    public bool animClimbing = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -39,10 +47,13 @@ public class Player : MonoBehaviour
     {
         rb.gravityScale = playerGravityScale;
         isOverLadder = playerLadderTrigger.GetLadderCheck();
+        playerHasHorizontalSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
 
         Run();
         IsOnLadderCheck();
         IsOnGroundCheck();
+        AnimationChecks();
+        Debug.Log(rb.velocity);
     }
 
     void OnMove(InputValue value)
@@ -60,22 +71,39 @@ public class Player : MonoBehaviour
     void Run()
     {
 
-            if(isOverLadder)
-            {
-                Vector2 playerVelocity = new Vector2(moveInput.x * playerSpeed, moveInput.y * playerSpeed);
-                rb.velocity = playerVelocity;
-            }
-            else
-            {
-                Vector2 playerVelocity = new Vector2(moveInput.x * playerSpeed, rb.velocity.y);
-                rb.velocity = playerVelocity;
-            }
+        if(isOverLadder)
+        {
+            Vector2 playerVelocity = new Vector2(moveInput.x * playerSpeed, moveInput.y * playerSpeed);
+            rb.velocity = playerVelocity;
+            
+        }
+        else
+        {
+            Vector2 playerVelocity = new Vector2(moveInput.x * playerSpeed, rb.velocity.y);
+            rb.velocity = playerVelocity;
+        }
     }
 
-    
-    private void OnTriggerEnter2D(Collider2D other)
+    void AnimationChecks()
     {
-        
+        if(playerHasHorizontalSpeed)
+        {
+            animator.SetBool("isWalking", true);
+            if(rb.velocity.x > 0)
+            {
+                //transform.localScale = new Vector2 (Mathf.Sign(rb.velocity.x), 1f);
+                transform.localScale = new Vector2 (1f, 1f);
+            }
+            else if(rb.velocity.x < 0)
+            {
+                transform.localScale = new Vector2 (-1f, 1f);
+            }
+            
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
     }
 
     private void IsOnLadderCheck()
