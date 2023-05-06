@@ -1811,7 +1811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &788920785
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2449,7 +2449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74510ed2e332bad46b6b2aa0db48ed97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 3a2eeece2a2122240a1066f44a5281b8, type: 2}
+  Item: {fileID: 0}
 --- !u!61 &1288807911
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8671,7 +8671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74510ed2e332bad46b6b2aa0db48ed97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: e8a85b7ef98df0b4985c247b555a11d6, type: 2}
+  Item: {fileID: 0}
 --- !u!61 &1578965377
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10000,7 +10000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74510ed2e332bad46b6b2aa0db48ed97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: fee1964e31fc6f74ea4b4d97c720055b, type: 2}
+  Item: {fileID: 0}
 --- !u!61 &2128274497
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10470,8 +10470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 611370572763240964}
-  m_Horizontal: 1
-  m_Vertical: 1
+  m_Horizontal: 0
+  m_Vertical: 0
   m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1
@@ -10622,8 +10622,8 @@ MonoBehaviour:
   m_StartAxis: 0
   m_CellSize: {x: 160, y: 160}
   m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 1
 --- !u!1 &611370572763240967
 GameObject:
   m_ObjectHideFlags: 0
