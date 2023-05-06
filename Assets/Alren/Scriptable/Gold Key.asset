@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae28d1c0ab4b8aa4d924f797e22c2e79, type: 3}
+  m_Name: Gold Key
+  m_EditorClassIdentifier: 
+  itemName: Silver Key 1
+  icon: {fileID: 21300000, guid: 8d3fffad95557b94e841d3d72b2b1844, type: 3}
+  gameObject: {fileID: 6920199861815106746, guid: 118cd46b2f4de9746b3032d33545bd85, type: 3}
