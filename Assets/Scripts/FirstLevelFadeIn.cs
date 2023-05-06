@@ -9,6 +9,4 @@ public class FirstLevelFadeIn : MonoBehaviour
     {
         _cutSceneFadeIn.SetTrigger("StartFade");
     }
-
-   
 }
