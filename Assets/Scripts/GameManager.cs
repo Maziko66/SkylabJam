@@ -16,6 +16,13 @@ public struct PlayerComp
     [SerializeField] Player player;
     [SerializeField] PlayerFeet playerFeet;
     [SerializeField] PlayerLadderTrigger playerLadderTrigger;
+
+    public void ActiveStatusAll(bool state) 
+    {
+        player.gameObject.SetActive(state);
+        playerFeet.gameObject.SetActive(state);
+        playerLadderTrigger.gameObject.SetActive(state);
+    }
 }
 
 
@@ -41,6 +48,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        SetPlayerActiveStatus();
+
+
         for(int i = 0; i < jaggedLayers.Count; i++)
         {
             if(i != currentLayerIndex)
@@ -89,6 +99,21 @@ public class GameManager : MonoBehaviour
             targetLayerIndex = currentIndex;
         }
         
+    }
+
+    private void SetPlayerActiveStatus()
+    {
+        for(int i = 0; i < players.Count; i++)
+        {
+            if(i != currentPlayer)
+            {
+                players[i].ActiveStatusAll(false);
+            }
+            else
+            {
+                players[i].ActiveStatusAll(true);
+            }
+        }
     }
 
 
