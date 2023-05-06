@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 39616259}
   - component: {fileID: 39616258}
   m_Layer: 10
-  m_Name: layer1_Tilemap1
+  m_Name: layer0_Tilemap1
   m_TagString: Tilemap 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 388282782}
   - component: {fileID: 388282781}
   m_Layer: 9
-  m_Name: layer1_Ladder
+  m_Name: layer0_Ladder
   m_TagString: Ladder 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1107,12 +1107,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdabf42b6af310e4695ce67984c8a115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: []
+  layer0: []
   layer1:
   - {fileID: 39616254}
   - {fileID: 388282778}
-  layer2:
-  - {fileID: 2033565230}
-  currentLayer: 1
+  jaggedLayers:
+  - layer:
+    - {fileID: 39616254}
+    - {fileID: 388282778}
+  - layer:
+    - {fileID: 2033565230}
+  currentLayerIndex: 0
+  targetLayerIndex: 1
 --- !u!4 &1005394542
 Transform:
   m_ObjectHideFlags: 0
@@ -1242,6 +1249,7 @@ GameObject:
   - component: {fileID: 1323343638}
   - component: {fileID: 1323343639}
   - component: {fileID: 1323343641}
+  - component: {fileID: 1323343642}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1415,6 +1423,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &1323343642
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323343635}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1733374606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,7 +1662,7 @@ GameObject:
   - component: {fileID: 2033565233}
   - component: {fileID: 2033565232}
   m_Layer: 10
-  m_Name: layer2_Tilemap1
+  m_Name: layer1_Tilemap1
   m_TagString: Tilemap 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
