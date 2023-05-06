@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using Cinemachine;
 
 [System.Serializable]
 public class JaggedLayers
@@ -23,11 +24,18 @@ public struct PlayerComp
         playerFeet.gameObject.SetActive(state);
         playerLadderTrigger.gameObject.SetActive(state);
     }
+
+    public GameObject GetPlayer()
+    {
+        return player.gameObject;
+    }
 }
 
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private CinemachineVirtualCamera followCam;
+
     [Header("Players")]
     [SerializeField] private List<PlayerComp> players = new List<PlayerComp>();
 
@@ -38,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Variables")]
     [SerializeField] private int currentPlayer = 0;
+    [SerializeField] private int targetPlayer = 1;
     [SerializeField] private int currentLayerIndex = 0;
     [SerializeField] private int targetLayerIndex = 1;
  
@@ -49,7 +58,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SetPlayerActiveStatus();
-
+        ChangeLayer();
 
         for(int i = 0; i < jaggedLayers.Count; i++)
         {
@@ -70,7 +79,8 @@ public class GameManager : MonoBehaviour
 
     private void OnSwap(InputValue value)
     {
-        ChangeLayer(currentLayerIndex, targetLayerIndex);
+        ChangeLayer();
+        SetPlayerActiveStatus();
     }
     
     
@@ -85,24 +95,28 @@ public class GameManager : MonoBehaviour
         collider.enabled = false;
     }
 
-    private void ChangeLayer(int currentIndex, int targetIndex)
+    private void ChangeLayer()
     {
-        for(int i = 0; i < jaggedLayers[currentIndex].layer.Length; i++)
-        {
-            //Collider2D currentLayerCollider = jaggedLayers[currentIndex].layer[i].GetComponent<Collider2D>();
-            jaggedLayers[currentIndex].layer[i].SetActive(false);
-            currentLayerIndex = targetIndex;
-        }
-        for(int i = 0; i < jaggedLayers[targetIndex].layer.Length; i++)
-        {
-            jaggedLayers[targetIndex].layer[i].SetActive(true);
-            targetLayerIndex = currentIndex;
-        }
+        int tempLayerIndex = currentLayerIndex;
         
+        for(int i = 0; i < jaggedLayers[currentLayerIndex].layer.Length; i++)
+        {
+            //Collider2D currentLayerCollider = jaggedLayers[currentLayerIndex].layer[i].GetComponent<Collider2D>();
+            jaggedLayers[currentLayerIndex].layer[i].SetActive(false);
+
+        }
+        for(int i = 0; i < jaggedLayers[targetLayerIndex].layer.Length; i++)
+        {
+            jaggedLayers[targetLayerIndex].layer[i].SetActive(true);
+        }
+        currentLayerIndex = targetLayerIndex;
+        targetLayerIndex = tempLayerIndex;        
     }
 
     private void SetPlayerActiveStatus()
     {
+        int tempPlayer = currentPlayer;
+        currentPlayer = targetPlayer;
         for(int i = 0; i < players.Count; i++)
         {
             if(i != currentPlayer)
@@ -112,8 +126,11 @@ public class GameManager : MonoBehaviour
             else
             {
                 players[i].ActiveStatusAll(true);
+                followCam.Follow = players[i].GetPlayer().transform;
             }
         }
+
+        targetPlayer = tempPlayer;
     }
 
 
