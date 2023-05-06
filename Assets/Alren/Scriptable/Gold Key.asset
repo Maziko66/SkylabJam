@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae28d1c0ab4b8aa4d924f797e22c2e79, type: 3}
   m_Name: Gold Key
   m_EditorClassIdentifier: 
-  itemName: Silver Key 1
+  itemName: Gold Key
   icon: {fileID: 21300000, guid: 8d3fffad95557b94e841d3d72b2b1844, type: 3}
-  gameObject: {fileID: 6920199861815106746, guid: 118cd46b2f4de9746b3032d33545bd85, type: 3}
