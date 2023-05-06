@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
+    
     [SerializeField] private List<Item> Items = new List<Item>();
     private GameObject[] Temps = new GameObject[10];
     private string[] Including = new string[10];
