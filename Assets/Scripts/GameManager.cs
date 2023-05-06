@@ -10,11 +10,19 @@ public class JaggedLayers
     public GameObject[] layer;
 }
 
+[System.Serializable]
+public struct PlayerComp
+{
+    [SerializeField] Player player;
+    [SerializeField] PlayerFeet playerFeet;
+    [SerializeField] PlayerLadderTrigger playerLadderTrigger;
+}
+
+
 public class GameManager : MonoBehaviour
 {
     [Header("Players")]
-    Player player1;
-    [SerializeField] private Player[] players;
+    [SerializeField] private List<PlayerComp> players = new List<PlayerComp>();
 
     [Header("Tilemap Layers")]
     [SerializeField] private GameObject[] layer0;
@@ -24,12 +32,13 @@ public class GameManager : MonoBehaviour
     
 
     [Header("Variables")]
+    [SerializeField] private int currentPlayer = 0;
     [SerializeField] private int currentLayerIndex = 0;
     [SerializeField] private int targetLayerIndex = 1;
  
     void Awake()
     {
-        player1 = FindObjectOfType<Player>();
+        //player1 = FindObjectOfType<Player>();
     }
 
     void Start()
