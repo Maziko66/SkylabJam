@@ -4,14 +4,8 @@ public class Movement : MonoBehaviour
 {
     public Rigidbody player;
     public int speed = 5;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W))
         {

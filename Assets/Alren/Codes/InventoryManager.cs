@@ -1,20 +1,18 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using Unity.VisualScripting;
-using System.Linq;
 
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-    
-    [SerializeField] private List<Item> Items = new List<Item>();
-    private GameObject[] Temps = new GameObject[10];
-    private string[] Including = new string[10];
+
+    [SerializeField] private List<Item> _items;
+    private GameObject[] _temps = new GameObject[10];
+    private string[] _including = new string[10];
     public Transform ItemContent;
     public GameObject InventoryItem;
-    private int j = 0;
+    private int index = 0;
 
     void Awake()
     {
@@ -23,19 +21,21 @@ public class InventoryManager : MonoBehaviour
 
     public void Add(Item item)
     {
-        Items.Add(item);
+        _items.Add(item);
     }
 
     public void Remove(Item item)
     {
-        Items.Remove(item);
+        _items.Remove(item);
     }
 
     public void ListItems()
     {
-        foreach (var item in Items)
+
+
+        foreach (var item in _items)
         {
-            bool isAvailable = Including.FirstOrDefault(i => item.itemName == i) != null;
+            bool isAvailable = _including.FirstOrDefault(i => item.itemName == i) != null;
 
             //isAvailable = false;
             //foreach (var includes in Including)
@@ -49,38 +49,45 @@ public class InventoryManager : MonoBehaviour
             if (!isAvailable)
             {
                 GameObject obj = Instantiate(InventoryItem, ItemContent);
-                Temps[j] = obj;
+                _temps[index] = obj;
                 var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
                 var itemIcon = obj.transform.Find("Image").GetComponent<Image>();
                 itemName.text = item.itemName;
                 itemIcon.sprite = item.icon;
-                Including[j] = itemName.text;
-                j++;
+                _including[index] = itemName.text;
+                index++;
             }
         }
     }
 
     private void Update()
     {
-        Text text;
-        string str;
-        
+        UseItem();
+    }
+
+    private void UseItem()
+    {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            foreach (var item in Items)
+
+            foreach (var item in _items)
             {
+                //if (item.ItemType == ItemType.Key || item.ItemType == ItemType.SilverKey)
                 if (item.itemName == "Key" || item.itemName == "Silver Key")
                 {
-                    InventoryManager.Instance.Remove(item);
-                    for(int i = 0; i < 10; i++)
+                    Instance.Remove(item);
+                    for (int i = 0; i < 10; i++)
                     {
-                        if (Temps[i] != null)
+                        if (_temps[i] != null)
                         {
-                            text = Temps[i].transform.Find("ItemName").GetComponent<Text>();
-                            str = text.text.ToString();
-                            if (str == "Key" || str == "Silver Key")
+                            // TODO @ 7.34pm: TMP'ye çevir!!!!!!!!
+                            //var data = Temps[i].transform.Find("ItemName").GetComponent<TMP_Text>();
+                            var data = _temps[i].transform.Find("ItemName").GetComponent<Text>();
+                            //text = Temps[i].transform.Find("ItemName").GetComponent<Text>();
+                            //str = text.text.ToString();
+                            if (data.text == "Key" || data.text == "Silver Key")
                             {
-                                Destroy(Temps[i]);
+                                Destroy(_temps[i]);
                                 break;
                             }
                         }
