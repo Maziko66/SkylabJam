@@ -34,6 +34,7 @@ public class MenuManager : MonoBehaviour
     public void OnClickBackInOptions()
     {
         _optionsMenu.SetActive(false);
+        _creditsMenu.SetActive(false);
         _mainMenu.SetActive(true);
     }
 
