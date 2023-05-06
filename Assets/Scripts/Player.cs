@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool canMove = true;
     [SerializeField] private bool isOverLadder = false;
     [SerializeField] private bool isFeetTouchingGround = false;
-    [SerializeField] private bool playerHasHorizontalSpeed;
+    public bool playerHasHorizontalSpeed; //Cutscene için eri?ebilmek için de?i?tirildi.
     
     [Header("Animation")]
     public bool animalking = false;
@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
     {
         if(canMove)
         {
-            moveInput = value.Get<Vector2>();
+            moveInput = value.Get<Vector2>(); 
         }
         else
         {
