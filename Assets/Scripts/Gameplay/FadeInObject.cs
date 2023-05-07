@@ -38,7 +38,7 @@ public class FadeInObject : MonoBehaviour
             Color c = sr.color;
             c.a = f;
             sr.color = c;
-            Debug.Log(sr.color);
+            //Debug.Log(sr.color);
             yield return new WaitForSeconds(0.05f);
         }
         col.enabled = true;

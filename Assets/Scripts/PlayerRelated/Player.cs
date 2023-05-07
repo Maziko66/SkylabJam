@@ -168,4 +168,9 @@ public class Player : MonoBehaviour
         return _playerGravityScale;
     }
 
+    public int GetPlayerID()
+    {
+        return playerID;
+    }
+
 }
