@@ -15357,21 +15357,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followCam: {fileID: 698867741}
   players:
-  - player: {fileID: 1323343640}
-    playerFeet: {fileID: 1733374610}
-    playerLadderTrigger: {fileID: 833673692}
   - player: {fileID: 434531307}
     playerFeet: {fileID: 265594808}
     playerLadderTrigger: {fileID: 807916337}
+  - player: {fileID: 1323343640}
+    playerFeet: {fileID: 1733374610}
+    playerLadderTrigger: {fileID: 833673692}
   jaggedLayers:
-  - layer:
-    - {fileID: 39616254}
-    - {fileID: 388282778}
-    - {fileID: 1574876870}
   - layer:
     - {fileID: 2033565230}
     - {fileID: 218842300}
     - {fileID: 2047287037}
+  - layer:
+    - {fileID: 39616254}
+    - {fileID: 388282778}
+    - {fileID: 1574876870}
   currentPlayer: 0
   targetPlayer: 1
   currentLayerIndex: 0
