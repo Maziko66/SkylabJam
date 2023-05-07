@@ -9,6 +9,7 @@ TagManager:
   - Ladder 1
   - LayerGate
   - Collectible
+  - Pushable
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,8 @@ TagManager:
   - Gate Trigger
   - Collectibles
   - 
-  - 
-  - 
+  - pushable
+  - pushable wall
   - 
   - 
   - 
