@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.tzdevil.labelblocks": {
+      "version": "https://github.com/tzdevil/Label-Blocks.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "2ad391e66db603dd3396c6f6aa6568d0d4956b3d"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.10",
       "depth": 1,

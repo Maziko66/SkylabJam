@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tilemap 1
+  - Tilemap 2
+  - Ladder 1
+  - LayerGate
+  - Collectible
   layers:
   - Default
   - TransparentFX
@@ -11,14 +16,14 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Player Feet
+  - Player Ladder Trigger
+  - Ladder
+  - Ground
+  - Background
+  - Gate Trigger
+  - Collectibles
   - 
   - 
   - 
@@ -40,4 +45,28 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 128372821
+    locked: 0
+  - name: Background
+    uniqueID: 3871628533
+    locked: 0
+  - name: Layer0
+    uniqueID: 735257773
+    locked: 0
+  - name: Layer1
+    uniqueID: 3994190879
+    locked: 0
+  - name: Layer2
+    uniqueID: 2795829109
+    locked: 0
+  - name: Layer3
+    uniqueID: 1984789391
+    locked: 0
+  - name: Objects
+    uniqueID: 3430708007
+    locked: 0
+  - name: Player
+    uniqueID: 1633794807
     locked: 0

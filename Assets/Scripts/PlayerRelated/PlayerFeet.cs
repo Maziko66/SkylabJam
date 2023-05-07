@@ -10,19 +10,19 @@ public class PlayerFeet : MonoBehaviour
     void Awake()
     {
         myCollider = GetComponent<Collider2D>();
-    }   
+    }
 
     void Update()
     {
-        if(myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
-            
+
             isTouchingGround = true;
             //Debug.Log("istouching ground: "+ isTouchingGround);
         }
         else
         {
-            
+
             isTouchingGround = false;
             //Debug.Log("istouching ground: "+ isTouchingGround);
         }
