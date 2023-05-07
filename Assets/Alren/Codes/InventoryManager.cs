@@ -70,7 +70,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        UseItem();
+        //UseItem();
     }
 
     private void UseItem()
@@ -88,7 +88,7 @@ public class InventoryManager : MonoBehaviour
                     {
                         if (_temps[i] != null)
                         {
-                            // TODO @ 7.34pm: TMP'ye çevir!!!!!!!!
+                            // TODO @ 7.34pm: TMP'ye ï¿½evir!!!!!!!!
                             //var data = Temps[i].transform.Find("ItemName").GetComponent<TMP_Text>();
                             var data = _temps[i].transform.Find("ItemName").GetComponent<Text>();
                             //text = Temps[i].transform.Find("ItemName").GetComponent<Text>();
@@ -102,6 +102,36 @@ public class InventoryManager : MonoBehaviour
                     }
                     break;
                 }
+            }
+        }
+    }
+
+    public bool GetItem(string inputName)
+    {
+        bool returnBool = false;
+        foreach(var item in _items)
+        {
+            if(item.itemName == inputName)
+            {
+                returnBool = true;
+            }
+            else
+            {
+                returnBool = false;
+            }
+        }
+        return returnBool;
+    }
+
+    public void RemoveItem(string inputName)
+    {
+        foreach(var item in _items)
+        {
+            if(item.itemName == inputName)
+            {
+                Debug.Log("removing: " + item);
+                _items.Remove(item);
+                return;
             }
         }
     }
