@@ -25,7 +25,7 @@ public class CutSceneManager : MonoBehaviour
         //playerController.playerHasHorizontalSpeed = true;
 
         _cutSceneAnim.SetBool("isWalking", true);
-        transform.DOMove(new Vector3(5, 0, 0), 5);
+        transform.DOMove(new Vector3(5, 0, 0), 3);
 
         _dialogueSentences.Add("alp");
         _dialogueSentences.Add("ali");
