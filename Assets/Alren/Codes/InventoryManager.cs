@@ -73,7 +73,7 @@ public class InventoryManager : MonoBehaviour
         //UseItem();
     }
 
-    private void UseItem()
+    private void UseItem(string name)
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -81,7 +81,7 @@ public class InventoryManager : MonoBehaviour
             foreach (var item in _items)
             {
                 //if (item.ItemType == ItemType.Key || item.ItemType == ItemType.SilverKey)
-                if (item.itemName == "Key" || item.itemName == "Silver Key")
+                if (item.itemName == name)
                 {
                     Instance.Remove(item);
                     for (int i = 0; i < 10; i++)
@@ -93,7 +93,7 @@ public class InventoryManager : MonoBehaviour
                             var data = _temps[i].transform.Find("ItemName").GetComponent<Text>();
                             //text = Temps[i].transform.Find("ItemName").GetComponent<Text>();
                             //str = text.text.ToString();
-                            if (data.text == "Key" || data.text == "Silver Key")
+                            if (data.text == name)
                             {
                                 Destroy(_temps[i]);
                                 break;
