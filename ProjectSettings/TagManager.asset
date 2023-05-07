@@ -3,11 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Tilemap 1
-  - Tilemap 2
-  - Ladder 1
-  - DialogStarter
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -15,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
-  - Player Feet
-  - Player Ladder Trigger
-  - Ladder
-  - Ground
-  - Background
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -44,7 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Ground
-    uniqueID: 128372821
     locked: 0

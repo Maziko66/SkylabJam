@@ -60,20 +60,17 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void UseItem(string str)
     {
-        UseItem();
-    }
-
-    private void UseItem()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
 
             foreach (var item in _items)
             {
+                print(item.itemName + " Trigger");
+                print(str);
                 //if (item.ItemType == ItemType.Key || item.ItemType == ItemType.SilverKey)
-                if (item.itemName == "Key" || item.itemName == "Silver Key")
+                if (item.itemName + " Trigger" == str)
                 {
                     Instance.Remove(item);
                     for (int i = 0; i < 10; i++)
@@ -85,7 +82,7 @@ public class InventoryManager : MonoBehaviour
                             var data = _temps[i].transform.Find("ItemName").GetComponent<Text>();
                             //text = Temps[i].transform.Find("ItemName").GetComponent<Text>();
                             //str = text.text.ToString();
-                            if (data.text == "Key" || data.text == "Silver Key")
+                            if (data.text + " Trigger" == str)
                             {
                                 Destroy(_temps[i]);
                                 break;
