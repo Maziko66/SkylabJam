@@ -6,6 +6,6 @@ public class TriggerChecker : MonoBehaviour
 {
     void OnTriggerStay2D(Collider2D other)
     {
-        InventoryManager.Instance.UseItem(other.gameObject.name);
+        //InventoryManager.Instance.UseItem(other.gameObject.name);
     }
 }
