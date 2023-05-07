@@ -9380,7 +9380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0.00000022649765, y: 0.000000113248824, z: -2.5650592e-14, w: 1}
-  m_LocalPosition: {x: 10.639998, y: 10.810005, z: -9.859999}
+  m_LocalPosition: {x: 8.916009, y: 10.839271, z: -9.859999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9511,7 +9511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87b713c4a0cb094cbbda2a9eeee0ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Menu
+  nextSceneName: MENU END
   player: {fileID: 1323343640}
 --- !u!212 &591562959
 SpriteRenderer:
