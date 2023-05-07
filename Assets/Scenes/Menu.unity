@@ -245,7 +245,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3df6b48274f3b004cbfe692886c666de, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a04da6152ba64ac409e3a8e1a17507d4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1524,7 +1524,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ukte
+  m_text: Ukde
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 14238fb4300625748af3a2d9a7807cc9, type: 2}
   m_sharedMaterial: {fileID: 8404939487179922271, guid: 14238fb4300625748af3a2d9a7807cc9, type: 2}

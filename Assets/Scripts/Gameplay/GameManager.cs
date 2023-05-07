@@ -30,6 +30,7 @@ public class PlayerComp
     public class GameManager : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera followCam;
+    //[SerializeField] private GameObject popup;
 
     [Header("Players")]
     [SerializeField] private List<PlayerComp> players;
@@ -42,6 +43,9 @@ public class PlayerComp
     [SerializeField] private int targetPlayer = 0;
     [SerializeField] private int currentLayerIndex = 1;
     [SerializeField] private int targetLayerIndex = 0;
+
+    [Header("Bools")]
+    [SerializeField] private bool showPopup = false;
 
     void Start()
     {
@@ -116,6 +120,20 @@ public class PlayerComp
     {
         collider.enabled = false;
     }
+    
+    //private void ShowPopup()
+    //{
+    //    if(showPopup)
+    //    {
+    //        popup.SetActive(true);
+            
+    //    }
+    //}
+
+    //private void DisablePopup()
+    //{
+    //    popup.SetActive(false);
+    //}
 
     // todo!!!! there was something here, check version control
 }

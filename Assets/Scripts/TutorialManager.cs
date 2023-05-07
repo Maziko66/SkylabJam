@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -15,18 +16,29 @@ public class TutorialManager : MonoBehaviour
     [Header("Others")]
     [SerializeField] private bool _isChurchClosed;
     [SerializeField] private bool _isfountainPopUpClosed;
+    public bool _allowedToOpenDoor = false;
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Church"))
         {
+            if (_key == null)
+            {
+                print("q");
+                SceneManager.LoadScene("Lv1");
+            }
             _isChurchClosed = false;
             print("cuma namazı");
             _churchPopUp.SetActive(true);
             _fountainCollider.SetActive(true);
             _key.SetActive(true);
-
+            
+        }
+        
+        if(_allowedToOpenDoor)
+        {
+            SceneManager.LoadScene("Lv1");
         }
     }
 
@@ -57,7 +69,7 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator ClosePopUp()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(7f);
         _churchPopUp.SetActive(false);
     }
 }
