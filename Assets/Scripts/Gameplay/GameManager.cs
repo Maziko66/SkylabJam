@@ -38,10 +38,10 @@ public class PlayerComp
     [SerializeField] private List<JaggedLayers> jaggedLayers;
 
     [Header("Variables")]
-    [SerializeField] private int currentPlayer = 0;
-    [SerializeField] private int targetPlayer = 1;
-    [SerializeField] private int currentLayerIndex = 0;
-    [SerializeField] private int targetLayerIndex = 1;
+    [SerializeField] private int currentPlayer = 1;
+    [SerializeField] private int targetPlayer = 0;
+    [SerializeField] private int currentLayerIndex = 1;
+    [SerializeField] private int targetLayerIndex = 0;
 
     void Start()
     {
