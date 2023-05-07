@@ -73,7 +73,7 @@ public class InventoryManager : MonoBehaviour
         //UseItem();
     }
 
-    private void UseItem(string name)
+    public void UseItem(string name)
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -123,16 +123,16 @@ public class InventoryManager : MonoBehaviour
         return returnBool;
     }
 
-    public void RemoveItem(string inputName)
-    {
-        foreach(var item in _items)
-        {
-            if(item.itemName == inputName)
-            {
-                Debug.Log("removing: " + item);
-                _items.Remove(item);
-                return;
-            }
-        }
-    }
+    //public void RemoveItem(string inputName)
+    //{
+    //    foreach (var item in _items)
+    //    {
+    //        if (item.itemName == inputName)
+    //        {
+    //            Debug.Log("removing: " + item);
+    //            _items.Remove(item);
+    //            return;
+    //        }
+    //    }
+    //}
 }

@@ -7,6 +7,7 @@ public class Keyhole : MonoBehaviour
     [SerializeField] FadeInObject2 fadeInObject;
     Collider2D switchCollider;
     InventoryManager inventoryManager;
+    [SerializeField] Sprite afterUnlock;
 
     [SerializeField] string requiredKeyName = "";
     [SerializeField] bool isColliding;
@@ -18,8 +19,6 @@ public class Keyhole : MonoBehaviour
         switchCollider = GetComponent<Collider2D>();
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         if (switchCollider.IsTouchingLayers(LayerMask.GetMask("Player Ladder Trigger")))
@@ -48,7 +47,8 @@ public class Keyhole : MonoBehaviour
         if(inventoryManager.GetItem(requiredKeyName) && isColliding && !isPressedOnce)
         {
             Debug.Log("unlocked");
-            inventoryManager.RemoveItem(requiredKeyName);
+            gameObject.GetComponent<SpriteRenderer>().sprite = afterUnlock;
+            inventoryManager.UseItem(requiredKeyName);
             fadeInObject.StartFadeIn();
         }
     }
